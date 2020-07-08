@@ -1,108 +1,106 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Javascript Console Online</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"
-    />
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
-  </head>
+<head>
+  <title>Javascript Console Online</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
-  <body>
-    <div id="topBar">
-      <span id="title"><em>Java</em>Script Online</span>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+
+<body>
+  <div id="topBar">
+    <span id="title"><em>Java</em>Script Compiler</span>
+  </div>
+
+  <div id="console">
+    <div id="settings">
+      <button
+        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        onclick="clearLog()">
+        <span>Clear Console</span>
+      </button>
+      <button
+        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        onclick="reloadPage()">
+        <span>Reload Page</span>
+      </button>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded inline-flex items-center"
+        onclick="runCode()">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+          <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" /></svg>
+        <span>Run</span>
+      </button>
+
+      <button
+        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        onclick="saveCode()">
+        <span>Save Code</span>
+      </button>
+
+      <button
+        class="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        onclick="showHelp()">
+        <span>Keyboard Shortcuts</span>
+      </button>
     </div>
 
-    <div id="console">
-      <div id="settings">
-        <button class="material-button red" onclick="clearLog()">
-          <span>Clear Console</span>
-        </button>
-        <button class="material-button red" onclick="reloadPage()">
-          <span>Reload Page</span>
-        </button>
-        <button class="material-button red" onclick="runCode()">
-          <span>Run Code</span>
-        </button>
-        <button class="material-button blue" onclick="saveCode()">
-          <span>Save Code</span>
-        </button>
-
-        <button class="material-button blue" onclick="showHelp()">
-          <span>Keyboard Shortcuts</span>
-        </button>
+    <div id="content">
+      <div id="left">
+        <textarea id="jscontent" placeholder="Write Javascript Here!" name="code">
+            </textarea>
       </div>
 
-      <div id="content">
-        <div id="left">
-          <textarea
-            id="jscontent"
-            placeholder="Write Javascript Here!"
-            name="code"
-          >
-          </textarea>
-        </div>
+      <div id="right">
+        <ul id="log">
 
-        <div id="right">
-          <ul id="log">
-            <!--    The Javascript Will Put Elements Here   -->
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4>Keyboard Shortcuts</h4>
-        <ul>
-          <li>
-            <div class="chip"><code>ctrl-enter</code></div>
-            or
-            <div class="chip"><code>cmd-enter</code></div>
-            : Run Code
-          </li>
-          <li>
-            <div class="chip"><code>ctrl-l</code></div>
-            or
-            <div class="chip"><code>cmd-l</code></div>
-            : Clear Console
-          </li>
-          <li>
-            <div class="chip"><code>ctrl-s</code></div>
-            or
-            <div class="chip"><code>cmd-s</code></div>
-            : Save Code
-          </li>
         </ul>
       </div>
-      <div class="modal-footer">
-        <a
-          href="#!"
-          class="modal-action modal-close waves-effect waves-green btn-flat"
-          >Got it, thanks</a
-        >
-      </div>
     </div>
-  </body>
+  </div>
 
-  <script
-    type="text/javascript"
-    src="https://code.jquery.com/jquery-2.1.1.min.js"
-  ></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
-  <script src="js/console.js"></script>
-  <script src="js/compile.js"></script>
-  <script src="js/script.js"></script>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Keyboard Shortcuts</h4>
+      <ul>
+        <li>
+          <div class="chip"><code>ctrl-enter</code></div>
+          or
+          <div class="chip"><code>cmd-enter</code></div>
+          : Run Code
+        </li>
+        <li>
+          <div class="chip"><code>ctrl-l</code></div>
+          or
+          <div class="chip"><code>cmd-l</code></div>
+          : Clear Console
+        </li>
+        <li>
+          <div class="chip"><code>ctrl-s</code></div>
+          or
+          <div class="chip"><code>cmd-s</code></div>
+          : Save Code
+        </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Got it, thanks</a>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+<script src="js/console.js"></script>
+<script src="js/compile.js"></script>
+<script src="js/script.js"></script>
+
 </html>
