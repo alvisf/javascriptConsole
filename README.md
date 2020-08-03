@@ -12,3 +12,4 @@ Live Demo: http://javascriptcompiler.netlify.app/
 - How to create HTML and CSS
 - How to use tailwindcss
 - Use local storage to store short term presistent data
+- How to change Mousetrap bind
