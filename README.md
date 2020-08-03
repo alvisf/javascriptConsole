@@ -11,3 +11,4 @@ Live Demo: http://javascriptcompiler.netlify.app/
 - How to use Bootstrap
 - How to create HTML and CSS
 - How to use tailwindcss
+- Use local storage to store short term presistent data
