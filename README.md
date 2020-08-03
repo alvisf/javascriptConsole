@@ -10,3 +10,4 @@ Live Demo: http://javascriptcompiler.netlify.app/
 - How to use vanilla javascript
 - How to use Bootstrap
 - How to create HTML and CSS
+- How to use tailwindcss
